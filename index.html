@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTHERWISE — the life on the other path</title>
+<meta name="description" content="OTHERWISE writes the life you'd be living if you'd made the other choice — then lets you talk to it. Join the waitlist.">
+<meta property="og:title" content="OTHERWISE">
+<meta property="og:description" content="the life you'd be living if you'd made the other choice — written, and then you can talk to it.">
+<meta property="og:image" content="assets/postcard-1.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#241a52; --deep:#0b0712; --ink:#f4efe6;
+    --muted:#b7afc9; --gold:#c9a24b; --green:#8fae8b; --rose:#c98b86;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:
+      radial-gradient(120% 90% at 50% -10%, #2c2068 0%, #1a1342 32%, #0d0a1c 68%, var(--deep) 100%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"EB Garamond",Georgia,serif;
+    font-size:19px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:64px 28px 96px}
+  .kicker{
+    text-align:center; color:var(--muted); font-style:italic;
+    font-size:16px; letter-spacing:.02em; opacity:.85; margin-bottom:34px;
+  }
+  h1{
+    font-family:"Cormorant Garamond",serif; font-weight:500;
+    font-size:clamp(56px,13vw,116px); line-height:.94; letter-spacing:.04em;
+    text-align:center; margin:0 0 6px;
+  }
+  .tagline{
+    font-family:"Cormorant Garamond",serif; font-style:italic;
+    font-size:clamp(22px,4.6vw,32px); line-height:1.3; color:var(--ink);
+    text-align:center; max-width:620px; margin:14px auto 0; opacity:.94;
+  }
+  .rule{height:1px; width:80px; margin:42px auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:.7}
+  p.body{margin:0 0 20px}
+  .lead{color:#e9e3d6}
+  .ask{color:var(--muted); font-style:italic}
+  .cards{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:38px 0 6px}
+  @media (max-width:560px){.cards{grid-template-columns:1fr}}
+  .cards img{width:100%; height:auto; border-radius:10px; display:block;
+    box-shadow:0 14px 40px rgba(0,0,0,.5); border:1px solid rgba(201,162,75,.18)}
+  .caption{text-align:center; color:var(--muted); font-style:italic; font-size:15px; margin:14px 0 0}
+  /* waitlist */
+  .join{margin:52px auto 0; max-width:540px; text-align:center}
+  .join h2{font-family:"Cormorant Garamond",serif; font-weight:500; font-size:clamp(28px,6vw,40px); margin:0 0 10px; letter-spacing:.02em}
+  .join p{color:var(--muted); margin:0 0 24px}
+  form{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+  input[type=email]{
+    flex:1 1 280px; min-width:0; padding:14px 16px; font-family:inherit; font-size:18px;
+    color:var(--ink); background:rgba(255,255,255,.05);
+    border:1px solid rgba(201,162,75,.35); border-radius:9px; outline:none;
+  }
+  input[type=email]::placeholder{color:#8d86a0}
+  input[type=email]:focus{border-color:var(--gold); background:rgba(255,255,255,.08)}
+  button{
+    padding:14px 26px; font-family:"Cormorant Garamond",serif; font-size:20px; letter-spacing:.03em;
+    color:var(--deep); background:var(--gold); border:none; border-radius:9px; cursor:pointer;
+    transition:transform .12s ease, filter .12s ease;
+  }
+  button:hover{filter:brightness(1.07); transform:translateY(-1px)}
+  .thanks{display:none; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:24px; color:var(--green); margin-top:8px}
+  .fineprint{color:#776f8a; font-size:14px; font-style:italic; margin-top:18px}
+  .footer{text-align:center; margin-top:72px; color:var(--gold); letter-spacing:.42em; font-size:15px; opacity:.85}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="kicker">— a postcard from the timeline where you chose otherwise —</div>
+  <h1>OTHERWISE</h1>
+  <div class="tagline">the life you'd be living if you'd made the other choice — written, and then you can talk to it.</div>
+
+  <div class="rule"></div>
+
+  <p class="body lead">you describe a fork in your road — a thing you did, or didn't. the version of you that took the other path is out there somewhere. otherwise writes that life: vivid, second person, specific. the city, the work, the person who hums while they cook. what it gave them. what it cost.</p>
+  <p class="body ask">then it lets you talk to that version of your life. ask it anything. <em>"are you happy here?" "what do you miss?"</em> — and it answers from inside that life.</p>
+
+  <div class="cards">
+    <img src="assets/postcard-1.png" alt="A postcard from another timeline — the life someone would be living if they'd moved abroad: a tiled flat above a bakery in Lisbon, freelance work, the light off the river. What it gave them and what it cost.">
+    <img src="assets/postcard-2.png" alt="A postcard from another timeline — the version who never quit painting: a studio in Berlin that smells of turpentine, poorer and not sorry. What it gave them and what it cost.">
+  </div>
+  <p class="caption">two real postcards from the other side.</p>
+
+  <section class="join">
+    <h2>it's not built yet.</h2>
+    <p>this page decides if it should be. leave your email and you'll be first through the door.</p>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLScvtbCCYKDEw7nZE9rd9tA8NUXjEQbSnhMbTNzpVM0o3V5ENQ/formResponse" method="POST" target="otherwise_sink" onsubmit="otwSubmitted=true">
+      <input type="email" name="entry.1747277997" placeholder="your email" required autocomplete="email">
+      <button type="submit">join the waitlist</button>
+    </form>
+    <div class="thanks" id="thanks">you're on the list. i'll come find you.</div>
+    <div class="fineprint">no spam. one email, when there's a door to walk through.</div>
+  </section>
+
+  <div class="footer">OTHERWISE</div>
+</main>
+
+<iframe name="otherwise_sink" style="display:none" title="hidden" onload="if(window.otwSubmitted){document.querySelector('form').reset();document.querySelector('form').style.display='none';document.getElementById('thanks').style.display='block';}"></iframe>
+</body>
+</html>
