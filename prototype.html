@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTHERWISE — preview</title>
+<meta name="description" content="A preview of OTHERWISE: pick a fork in your road, see the life on the other path, and talk to it.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#241a52; --deep:#0b0712; --ink:#f4efe6;
+    --muted:#b7afc9; --gold:#c9a24b; --green:#8fae8b; --rose:#c98b86;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background-color:var(--deep);
+    background-image:radial-gradient(125% 70% at 50% -8%, #2c2068 0%, #1a1342 30%, #0d0a1c 62%, var(--deep) 100%);
+    background-repeat:no-repeat; background-size:100% 100%;
+    color:var(--ink); font-family:"EB Garamond",Georgia,serif; font-size:18px; line-height:1.6;
+    -webkit-font-smoothing:antialiased; min-height:100vh;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:40px 22px 90px}
+  a{color:var(--gold)}
+  .top{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px}
+  .brand{font-family:"Cormorant Garamond",serif; letter-spacing:.34em; font-size:18px; color:var(--gold)}
+  .preview-tag{font-style:italic; color:var(--muted); font-size:14px}
+  .back{background:none; border:none; color:var(--muted); font-family:inherit; font-style:italic; font-size:16px; cursor:pointer; padding:6px 0}
+  .back:hover{color:var(--ink)}
+
+  /* ---- home ---- */
+  .lede{font-family:"Cormorant Garamond",serif; font-weight:500; font-size:clamp(30px,7vw,46px); line-height:1.08; letter-spacing:.02em; margin:26px 0 6px}
+  .sub{color:var(--muted); font-style:italic; margin:0 0 26px}
+  .forklabel{color:var(--gold); letter-spacing:.16em; font-size:13px; text-transform:uppercase; margin:30px 0 12px}
+  .forks{display:flex; flex-direction:column; gap:12px}
+  .fork{
+    text-align:left; width:100%; cursor:pointer;
+    background:rgba(255,255,255,.04); border:1px solid rgba(201,162,75,.22); border-radius:12px;
+    color:var(--ink); font-family:"Cormorant Garamond",serif; font-size:23px; letter-spacing:.01em;
+    padding:18px 20px; transition:border-color .15s, background .15s, transform .12s;
+  }
+  .fork:hover{border-color:var(--gold); background:rgba(255,255,255,.07); transform:translateY(-1px)}
+  .fork .arrow{float:right; color:var(--gold); opacity:.7}
+  .own{margin-top:26px}
+  .own input{width:100%; padding:14px 16px; font-family:inherit; font-size:18px; color:var(--ink);
+    background:rgba(255,255,255,.05); border:1px solid rgba(201,162,75,.3); border-radius:10px; outline:none}
+  .own input:focus{border-color:var(--gold)}
+  .own .note{color:#7d7592; font-style:italic; font-size:14px; margin-top:8px; min-height:20px}
+
+  /* ---- postcard ---- */
+  .postcard{
+    position:relative; border-radius:14px; padding:34px 30px 26px; margin:18px 0 8px;
+    background:linear-gradient(170deg,#241a52 0%,#1a1240 30%,#120d28 62%,#0b0712 100%);
+    border:1px solid rgba(201,162,75,.2); box-shadow:0 18px 50px rgba(0,0,0,.5);
+    opacity:0; transform:translateY(10px); animation:rise .7s ease forwards;
+  }
+  @keyframes rise{to{opacity:1; transform:none}}
+  .pc-kicker{text-align:center; color:var(--muted); font-style:italic; font-size:14px; opacity:.8; margin-bottom:18px}
+  .pc-loc{color:var(--gold); letter-spacing:.18em; font-size:12.5px; text-transform:uppercase; margin-bottom:4px}
+  .pc-title{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:500; font-size:clamp(30px,6.5vw,42px); line-height:1.04; margin:2px 0 14px; padding-bottom:14px; border-bottom:1px solid rgba(201,162,75,.18)}
+  .pc-body{color:#ece6d8; font-size:18.5px}
+  .pc-foot{display:flex; flex-wrap:wrap; gap:22px; margin-top:22px}
+  .pc-foot .col{flex:1 1 220px}
+  .pc-foot .lab{letter-spacing:.14em; font-size:11.5px; text-transform:uppercase}
+  .pc-foot .gave .lab{color:var(--green)} .pc-foot .cost .lab{color:var(--rose)}
+  .pc-foot .val{font-style:italic; color:#e7e1d4; margin-top:3px}
+  .pc-mark{text-align:center; color:var(--gold); letter-spacing:.4em; font-size:13px; margin-top:24px; opacity:.85}
+
+  /* ---- chat ---- */
+  .talk-h{font-family:"Cormorant Garamond",serif; font-size:24px; margin:30px 0 4px}
+  .talk-sub{color:var(--muted); font-style:italic; font-size:15px; margin:0 0 16px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px}
+  .chip{cursor:pointer; background:rgba(201,162,75,.1); border:1px solid rgba(201,162,75,.35); color:var(--ink);
+    font-family:inherit; font-size:15px; padding:8px 13px; border-radius:999px; transition:background .15s}
+  .chip:hover{background:rgba(201,162,75,.22)}
+  .log{display:flex; flex-direction:column; gap:14px; margin-bottom:16px}
+  .bubble{max-width:86%; padding:12px 16px; border-radius:14px; font-size:17.5px; line-height:1.5}
+  .me{align-self:flex-end; background:rgba(201,162,75,.16); border:1px solid rgba(201,162,75,.3); border-bottom-right-radius:4px}
+  .them{align-self:flex-start; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-bottom-left-radius:4px; color:#ece6d8; font-style:italic}
+  .dots span{display:inline-block; width:6px; height:6px; margin:0 2px; border-radius:50%; background:var(--muted); opacity:.5; animation:blink 1.2s infinite}
+  .dots span:nth-child(2){animation-delay:.2s} .dots span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,60%,100%{opacity:.25} 30%{opacity:.9}}
+  .ask{display:flex; gap:8px}
+  .ask input{flex:1; padding:13px 15px; font-family:inherit; font-size:17px; color:var(--ink);
+    background:rgba(255,255,255,.05); border:1px solid rgba(201,162,75,.3); border-radius:10px; outline:none}
+  .ask input:focus{border-color:var(--gold)}
+  .ask button{padding:13px 20px; font-family:"Cormorant Garamond",serif; font-size:18px; color:var(--deep);
+    background:var(--gold); border:none; border-radius:10px; cursor:pointer}
+  .cta{margin:40px 0 0; text-align:center; padding-top:26px; border-top:1px solid rgba(201,162,75,.16)}
+  .cta p{color:var(--muted); font-style:italic; margin:0 0 14px}
+  .cta a.btn{display:inline-block; text-decoration:none; padding:13px 26px; background:var(--gold); color:var(--deep);
+    border-radius:10px; font-family:"Cormorant Garamond",serif; font-size:19px; letter-spacing:.02em}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <span class="brand">OTHERWISE</span>
+    <span class="preview-tag">preview · responses are pre-written</span>
+  </div>
+
+  <!-- HOME -->
+  <section id="home">
+    <div class="lede">describe a fork in your road.</div>
+    <p class="sub">a choice you made, or didn't. otherwise writes the life on the other side — then lets you talk to it.</p>
+    <div class="forklabel">try one of these</div>
+    <div class="forks" id="forks"></div>
+    <div class="own">
+      <input id="ownInput" type="text" placeholder="…or type your own fork in the road" autocomplete="off">
+      <div class="note" id="ownNote"></div>
+    </div>
+  </section>
+
+  <!-- SCENARIO -->
+  <section id="scenario" class="hidden">
+    <button class="back" id="backBtn">← choose a different fork</button>
+    <div class="postcard" id="postcard"></div>
+    <h2 class="talk-h">talk to this version of your life</h2>
+    <p class="talk-sub">it answers from inside that life. ask it anything.</p>
+    <div class="chips" id="chips"></div>
+    <div class="log" id="log"></div>
+    <form class="ask" id="askForm" autocomplete="off">
+      <input id="askInput" type="text" placeholder="ask this version of you something…">
+      <button type="submit">ask</button>
+    </form>
+    <div class="cta">
+      <p>this is a preview with five lives rendered. the real one writes <em>yours</em>.</p>
+      <a class="btn" href="./index.html#join">join the waitlist →</a>
+    </div>
+  </section>
+</main>
+
+<script>
+const SCENARIOS = [
+  {
+    fork: "i almost moved abroad but stayed",
+    loc: "Lisbon · a tiled flat above a bakery",
+    title: "The year you said yes to the boat",
+    body: "You take your coffee on the step while the ovens below wake the whole street. Your Portuguese is clumsy but loved. The work is freelance and uneven, some months thin, but the light off the river at six does something the old salary never did. There is a dog now. There is a person who hums while they cook.",
+    gave: "A slowness you didn't know you were allowed.",
+    cost: "The savings, the certainty, and a friend who couldn't follow.",
+    fallback: "i only know this life from the inside. ask me something close to the bone — am i happy, what do i miss, do i regret it?",
+    qa: [
+      {q:"are you happy here?", keys:["happy","happi","content","good life"], a:"happier than i can defend on a spreadsheet. some mornings i miss being sure of things. then the bakery smell comes up through the floor and i forget the question."},
+      {q:"what do you miss?", keys:["miss","homesick","family","home"], a:"sunday dinners i didn't have to translate. my mother's voice without a delay on the line. knowing exactly what next year looks like — i miss that and i don't, both at once."},
+      {q:"do you regret it?", keys:["regret","mistake","wrong choice"], a:"no. i regret the version of me that almost didn't. he's still back there, isn't he. tell him the water's fine."},
+      {q:"what's a normal day like?", keys:["day","tuesday","normal","routine","wake"], a:"coffee on the step. three hours of work that's mine. a long lunch i stopped feeling guilty about. the river at six. someone humming in the kitchen while it gets dark."},
+      {q:"what would you tell me?", keys:["tell","advice","should i","what do you think","scared","scary","afraid"], a:"it was terrifying for about four months, then it just became my life. the fear was all about the leaving, never the landing. you already know which one of us sleeps better."}
+    ]
+  },
+  {
+    fork: "the version who never quit painting",
+    loc: "Berlin · a studio that smells of turpentine",
+    title: "The version who never quit painting",
+    body: "You are poorer and you are not sorry. The studio is freezing till noon and full of half-finished canvases that argue with each other. A small gallery sells just enough. You eat late with other stubborn people. Some nights you doubt all of it; most mornings you cannot wait to get back to the easel.",
+    gave: "A body of work, and a self you didn't abandon.",
+    cost: "Comfort, and the approval of people who loved the safe you.",
+    fallback: "i can only answer from in here, coat on, hands stained. ask me the real things — am i happy, what i miss, whether i'd do it again.",
+    qa: [
+      {q:"are you happy here?", keys:["happy","happi","content"], a:"happy isn't the word. occupied. lit up. happy is for people with savings — i have something better and worse than happy."},
+      {q:"what do you miss?", keys:["miss","family","home","money"], a:"a heating bill i didn't have to think about. being the person my dad bragged about. a little of the certainty, sure. not enough to trade back."},
+      {q:"do you regret it?", keys:["regret","mistake"], a:"every february. then march comes and i sell a canvas to someone who cried in front of it, and february never happened."},
+      {q:"what's a normal day like?", keys:["day","tuesday","normal","routine","wake"], a:"freezing till noon, so i paint in a coat. bread and bad coffee. the light fades at four and i chase it. late dinner with other stubborn people. doubt, sleep, repeat."},
+      {q:"what would you tell me?", keys:["tell","advice","should i","quit","give up","what do you think"], a:"i've quit in my head a hundred times. then i wake and my hands are mixing a colour before i've decided anything. stop asking the painting for permission."}
+    ]
+  },
+  {
+    fork: "i took the leap instead of the safe offer",
+    loc: "a sublet with four desks and one window",
+    title: "The year you bet on yourself",
+    body: "You haven't taken a real salary in fourteen months. The four of you share a sublet that doubles as the office, and the window faces a wall. But something you made is being used by strangers right now, tonight, and that has rewired something in you. You are more tired and more awake than you have ever been.",
+    gave: "Ownership — of the wins, the wreckage, all of it.",
+    cost: "A salary, a title your parents understood, and most of your evenings.",
+    fallback: "i'm too deep in it to give you the clean answer. ask me something specific — am i happy, what i miss, is it even working.",
+    qa: [
+      {q:"are you happy here?", keys:["happy","happi","content"], a:"too close to know. ask me at the exit or the funeral. but i haven't checked the clock once today, and i used to live by it."},
+      {q:"what do you miss?", keys:["miss","family","home"], a:"fridays that actually ended. a paycheck that didn't depend on me being brave. the version of my weekend that wasn't also work."},
+      {q:"do you regret it?", keys:["regret","mistake"], a:"not yet. ask me if it dies. even then — i'd rather carry a scar than a what-if."},
+      {q:"is it working?", keys:["working","work","day","tuesday","normal","money","succeed","going"], a:"depends on the hour. this morning we lost a customer and i wanted to disappear. by lunch, two more signed up. it's a heartbeat, not a graph."},
+      {q:"what would you tell me?", keys:["tell","advice","should i","what do you think","scared","scary"], a:"take the offer if you want to sleep. take the leap if you want to find out what you're made of. just don't pretend the safe one is free — it costs you the finding-out."}
+    ]
+  },
+  {
+    fork: "i moved home instead of chasing the city",
+    loc: "your hometown · a house with a yard",
+    title: "The year you chose the near things",
+    body: "You live twenty minutes from where you grew up. The career is smaller than the one you pictured at twenty-two — solid, unspectacular, done by six. But you were there for the diagnosis, and the recovery, and a hundred ordinary dinners that turned out not to be ordinary. Your niece knows your face. The maple you planted is taller than you now.",
+    gave: "Time with the people the clock is actually counting down.",
+    cost: "The bigger title, the skyline, the person you might have become out there.",
+    fallback: "this is a quiet life; it doesn't explain itself well. ask me plainly — am i happy, what i miss, was it worth it.",
+    qa: [
+      {q:"are you happy here?", keys:["happy","happi","content"], a:"quietly, yeah. it's not a happiness you can post. it's the kind you notice later, in a photo, when everyone in it is still here."},
+      {q:"what do you miss?", keys:["miss","ambition","city","career"], a:"who i might've been in the city. the ambition i had to set down. some nights i hear it knocking. then someone needs picking up, and i go."},
+      {q:"do you regret it?", keys:["regret","mistake","worth"], a:"no. the career would've waited, and then it wouldn't have. people don't wait. i got the years — you can't get the years back."},
+      {q:"what's a normal day like?", keys:["day","tuesday","normal","routine","wake"], a:"a school run that isn't mine but i do it. work that ends at six and stays ended. dinner at my parents' twice a week. the dog, the yard, the maple. small, on purpose."},
+      {q:"what would you tell me?", keys:["tell","advice","should i","what do you think"], a:"the city will still be there. some of these people won't. that's the whole math. i'm not saying it's easy — i'm saying it's clear."}
+    ]
+  },
+  {
+    fork: "i left, instead of settling in",
+    loc: "a one-bedroom that's entirely yours",
+    title: "The year you chose your own weather",
+    body: "There's no one to answer to about the lamp you left on or the trip you booked alone. It was lonely for a long season — you won't pretend it wasn't. But the apartment is full of your own choices now, and you've stopped shrinking to fit a room. You met someone, recently. You're in no hurry. You know what you'll walk away from now, and that changes how you stay.",
+    gave: "A self you stopped negotiating away.",
+    cost: "A built life, a shared history, and the comfort of not starting over.",
+    fallback: "i learned this life slowly. ask me gently — am i happy, what i miss, whether it was lonely.",
+    qa: [
+      {q:"are you happy here?", keys:["happy","happi","content"], a:"now, yes. for a while it was just quiet, and i had to learn the difference between quiet and empty. i know it now."},
+      {q:"what do you miss?", keys:["miss","them","him","her","company"], a:"the easy parts. sunday mornings. knowing someone's coming home. i don't miss making myself smaller so the rooms felt full."},
+      {q:"do you regret it?", keys:["regret","mistake"], a:"i grieved it. that's not the same as regret. i'd do it again — gentler, maybe — but i'd do it."},
+      {q:"was it lonely?", keys:["lonely","alone","day","tuesday","normal","hard"], a:"brutally, for about a year. then one day the silence wasn't a wound, it was a room. i decorated it. i live there now."},
+      {q:"what would you tell me?", keys:["tell","advice","should i","what do you think","stay","leave"], a:"leaving isn't the failure. staying past the point you recognised yourself — that's the one nobody warns you about."}
+    ]
+  }
+];
+
+const $ = s => document.querySelector(s);
+const home = $("#home"), scene = $("#scenario");
+
+// build fork list
+const forksEl = $("#forks");
+SCENARIOS.forEach((s,i)=>{
+  const b=document.createElement("button");
+  b.className="fork"; b.innerHTML = `“${s.fork}” <span class="arrow">→</span>`;
+  b.onclick=()=>openScenario(i);
+  forksEl.appendChild(b);
+});
+
+// own-fork input (honest preview behavior)
+const ownInput=$("#ownInput"), ownNote=$("#ownNote");
+ownInput.addEventListener("keydown",e=>{
+  if(e.key==="Enter" && ownInput.value.trim()){
+    ownNote.textContent="the full version writes any fork you give it. this preview has five rendered for you — try one above ↑";
+  }
+});
+
+let cur=null;
+function openScenario(i){
+  cur=SCENARIOS[i];
+  home.classList.add("hidden"); scene.classList.remove("hidden");
+  window.scrollTo(0,0);
+  // postcard
+  $("#postcard").innerHTML = `
+    <div class="pc-kicker">— a postcard from the timeline where you chose otherwise —</div>
+    <div class="pc-loc">${cur.loc}</div>
+    <div class="pc-title">${cur.title}</div>
+    <div class="pc-body">${cur.body}</div>
+    <div class="pc-foot">
+      <div class="col gave"><div class="lab">What it gave them</div><div class="val">${cur.gave}</div></div>
+      <div class="col cost"><div class="lab">What it cost them</div><div class="val">${cur.cost}</div></div>
+    </div>
+    <div class="pc-mark">OTHERWISE</div>`;
+  // reset chat
+  $("#log").innerHTML="";
+  const chips=$("#chips"); chips.innerHTML="";
+  cur.qa.forEach(qa=>{
+    const c=document.createElement("button");
+    c.className="chip"; c.textContent=qa.q;
+    c.onclick=()=>ask(qa.q);
+    chips.appendChild(c);
+  });
+  $("#askInput").value="";
+}
+
+$("#backBtn").onclick=()=>{ scene.classList.add("hidden"); home.classList.remove("hidden"); window.scrollTo(0,0); };
+
+$("#askForm").addEventListener("submit",e=>{ e.preventDefault();
+  const v=$("#askInput").value.trim(); if(!v) return; $("#askInput").value=""; ask(v); });
+
+function matchAnswer(text){
+  const t=text.toLowerCase();
+  // exact-ish question match first
+  for(const qa of cur.qa){ if(t===qa.q.toLowerCase()) return qa.a; }
+  // keyword scan
+  let best=null, bestScore=0;
+  for(const qa of cur.qa){
+    let score=0; for(const k of qa.keys){ if(t.includes(k)) score++; }
+    if(score>bestScore){ bestScore=score; best=qa.a; }
+  }
+  return bestScore>0 ? best : cur.fallback;
+}
+
+function bubble(cls, html){
+  const d=document.createElement("div"); d.className="bubble "+cls; d.innerHTML=html;
+  $("#log").appendChild(d); d.scrollIntoView({behavior:"smooth", block:"end"}); return d;
+}
+
+function ask(text){
+  bubble("me", escapeHtml(text));
+  const ans=matchAnswer(text);
+  const typing=bubble("them", '<span class="dots"><span></span><span></span><span></span></span>');
+  const delay = 650 + Math.min(ans.length*9, 1400);
+  setTimeout(()=>{ typing.innerHTML=escapeHtml(ans); typing.scrollIntoView({behavior:"smooth",block:"end"}); }, delay);
+}
+
+function escapeHtml(s){ return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+</script>
+</body>
+</html>
