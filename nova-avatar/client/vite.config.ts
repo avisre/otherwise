@@ -25,6 +25,16 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'dist',
       sourcemap: true,
+      // three.js is ~700 kB on its own and lives in its own vendor chunk below.
+      chunkSizeWarningLimit: 800,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            three: ['three', '@pixiv/three-vrm'],
+            react: ['react', 'react-dom'],
+          },
+        },
+      },
     },
   };
 });
