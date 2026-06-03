@@ -1,0 +1,31 @@
+name: nova-ci
+
+# Scoped to the nova-avatar/ subfolder so it never runs on changes to the
+# OTHERWISE landing page at the repo root.
+on:
+  push:
+    paths:
+      - 'nova-avatar/**'
+      - '.github/workflows/nova-ci.yml'
+  pull_request:
+    paths:
+      - 'nova-avatar/**'
+      - '.github/workflows/nova-ci.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nova-avatar
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: nova-avatar/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run lint
